@@ -1,4 +1,4 @@
-# Simple wxWidgets Application
+# SimpleDialog wxWidgets Application
 
 A simple C++ application written in wxWidgets
 

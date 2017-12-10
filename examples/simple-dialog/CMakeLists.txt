@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
-project (SimpleFrame)
+project (SimpleDialog)
 
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_STANDARD 11)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
 	add_definitions(-O2 -Os) 
@@ -16,5 +16,5 @@ link_directories(${WXWIDGETS_ROOT}/lib ${MINGW_ROOT}/x86_64-w64-mingw32/lib)
 include_directories(${WXWIDGETS_ROOT}/include)
 file(GLOB SOURCES "*.cpp")
 
-add_executable(SimpleFrame ${SOURCES})
-target_link_libraries(SimpleFrame ${PROJECT_LINK_LIBS} -mwindows)
+add_executable(SimpleDialog ${SOURCES})
+target_link_libraries(SimpleDialog ${PROJECT_LINK_LIBS} -mwindows)

@@ -1,10 +1,10 @@
 #include "main.h"
-#include "frame.h"
+#include "dialog.h"
 
 IMPLEMENT_APP(SimpleApp)
 
 bool SimpleApp::OnInit() {
-	SimpleFrame *simple = new SimpleFrame(wxT("My SimpleFrame App"));
+	SimpleDialog *simple = new SimpleDialog(wxT("My SimpleDialog App"));
 	simple->Show(true);
 	return true;
 }
