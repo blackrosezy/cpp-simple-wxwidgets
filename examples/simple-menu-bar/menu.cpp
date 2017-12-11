@@ -1,6 +1,6 @@
 #include "menu.h"
 
-SimpleMenu::SimpleMenu(const wxString &title) :
+SimpleDialog::SimpleDialog(const wxString &title) :
         wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(250, 150)) {
     wxImage::AddHandler(new wxPNGHandler);
     menuBar = new wxMenuBar;
@@ -16,11 +16,11 @@ SimpleMenu::SimpleMenu(const wxString &title) :
 
     menuBar->Append(menuFile, wxT("&File"));
     SetMenuBar(menuBar);
-    Connect(wxID_EXIT, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(SimpleMenu::OnQuit));
+    Connect(wxID_EXIT, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(SimpleDialog::OnQuit));
 
     Centre();
 }
 
-void SimpleMenu::OnQuit(wxCommandEvent &event) {
+void SimpleDialog::OnQuit(wxCommandEvent &event) {
     Close(true);
 }

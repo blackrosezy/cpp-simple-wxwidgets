@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project(SimpleMenu)
+project(SimpleContextMenu)
 
 set(CMAKE_CXX_FLAGS_RELEASE "-Os")
 

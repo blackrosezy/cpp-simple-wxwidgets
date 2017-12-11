@@ -4,7 +4,7 @@
 IMPLEMENT_APP(SimpleApp)
 
 bool SimpleApp::OnInit() {
-	SimpleMenu *simple = new SimpleMenu(wxT("My SimpleMenu App"));
+	SimpleDialog *simple = new SimpleDialog(wxT("My SimpleDialog App"));
 	simple->SetIcon(wxICON(APP_ICON));
 	simple->Show(true);
 	return true;

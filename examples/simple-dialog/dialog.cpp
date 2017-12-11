@@ -6,3 +6,4 @@ SimpleDialog::SimpleDialog(const wxString &title) :
     ShowModal();
     Destroy();
 }
+
