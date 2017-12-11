@@ -3,4 +3,5 @@ project(All)
 
 add_subdirectory(examples/simple-dialog)
 add_subdirectory(examples/simple-frame)
-add_subdirectory(examples/simple-menu)
+add_subdirectory(examples/simple-menu-bar)
+add_subdirectory(examples/simple-context-menu)

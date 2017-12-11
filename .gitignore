@@ -3,6 +3,6 @@
 **/Makefile
 /cmake-build-release
 /cmake-build-debug
-/.idea
+**/.idea
 **/CMakeFiles
 *.cbp
