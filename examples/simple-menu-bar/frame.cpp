@@ -1,7 +1,7 @@
-#include "menu.h"
+#include "frame.h"
 
 SimpleDialog::SimpleDialog(const wxString &title) :
-        wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(250, 150)) {
+        wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(500, 350)) {
     wxImage::AddHandler(new wxPNGHandler);
     menuBar = new wxMenuBar;
 

@@ -1,5 +1,5 @@
 #include "main.h"
-#include "menu.h"
+#include "frame.h"
 
 IMPLEMENT_APP(SimpleApp)
 
