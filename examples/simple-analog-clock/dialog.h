@@ -1,5 +1,6 @@
 #include <wx/wx.h>
-#include "clockPanel.h"
+#include "clockdc.h"
+#include "clockgc.h"
 
 class SimpleDialog : public wxDialog {
 public:
@@ -9,6 +10,7 @@ private:
     void OnQuit(wxCloseEvent &event);
     void OnTimer(wxTimerEvent &event);
 
-    ClockPanel *imagePanel;
+    wxClockGC *clockGC;
+    wxClockDC *clockDC;
     wxTimer *timer;
 };

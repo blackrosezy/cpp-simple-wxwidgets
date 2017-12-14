@@ -2,14 +2,14 @@
 // Created by blackrosezy on 12-Dec-17.
 //
 
-#ifndef ALL_IMAGEPANEL_H
-#define ALL_IMAGEPANEL_H
+#ifndef ALL_WXCLOCKDC_H
+#define ALL_WXCLOCKDC_H
 
 #include <wx/wx.h>
 
-class ClockPanel : public wxPanel {
+class wxClockDC : public wxPanel {
 public:
-    ClockPanel(wxWindow *parent);
+    wxClockDC(wxWindow *parent);
 
     void paintEvent(wxPaintEvent &event);
 
@@ -50,4 +50,4 @@ private:
 };
 
 
-#endif //ALL_IMAGEPANEL_H
+#endif //ALL_WXCLOCKDC_H

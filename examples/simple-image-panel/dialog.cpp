@@ -5,8 +5,8 @@ SimpleDialog::SimpleDialog(const wxString &title) :
                  wxDEFAULT_DIALOG_STYLE | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxRESIZE_BORDER) {
     wxImage::AddHandler(new wxJPEGHandler);
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
-    imagePanel = new ImagePanel(this, wxT("images/soup.jpg"));
-    sizer->Add(imagePanel, 1, wxEXPAND);
+    clockGC = new ImagePanel(this, wxT("images/soup.jpg"));
+    sizer->Add(clockGC, 1, wxEXPAND);
     SetSizer(sizer);
 
     Centre();

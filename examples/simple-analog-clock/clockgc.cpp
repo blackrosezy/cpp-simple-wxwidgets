@@ -2,18 +2,18 @@
 // Created by blackrosezy on 12-Dec-17.
 //
 #include <wx/graphics.h>
-#include "clockPanel.h"
+#include "clockgc.h"
 
 const double PI = acos(-1);
 const double RATIO = 0.05;
 
-ClockPanel::ClockPanel(wxWindow *parent) : wxPanel(parent) {
+wxClockGC::wxClockGC(wxWindow *parent) : wxPanel(parent) {
     SetDoubleBuffered(true);
-    Bind(wxEVT_PAINT, &ClockPanel::paintEvent, this);
-    Bind(wxEVT_SIZE, &ClockPanel::OnSize, this);
+    Bind(wxEVT_PAINT, &wxClockGC::paintEvent, this);
+    Bind(wxEVT_SIZE, &wxClockGC::OnSize, this);
 }
 
-void ClockPanel::paintEvent(wxPaintEvent &event) {
+void wxClockGC::paintEvent(wxPaintEvent &event) {
     wxPaintDC dc(this);
     wxGraphicsContext *gc = wxGraphicsContext::Create(dc);
     if (gc) {
@@ -22,13 +22,13 @@ void ClockPanel::paintEvent(wxPaintEvent &event) {
     }
 }
 
-void ClockPanel::OnSize(wxSizeEvent &event) {
+void wxClockGC::OnSize(wxSizeEvent &event) {
     Refresh();
     //skip the event.
     event.Skip();
 }
 
-void ClockPanel::drawClock(wxGraphicsContext *gc) {
+void wxClockGC::drawClock(wxGraphicsContext *gc) {
     wxDouble x, y;
     gc->GetSize(&x, &y);
     (x > y) ? radius = y / 2 : radius = x / 2;
@@ -39,14 +39,14 @@ void ClockPanel::drawClock(wxGraphicsContext *gc) {
     drawCenterScrewCircle(gc);
 }
 
-void ClockPanel::drawBaseClock(wxGraphicsContext *gc) {
+void wxClockGC::drawBaseClock(wxGraphicsContext *gc) {
     drawClockCircle(gc);
     drawMinuteLines(gc, 5);
     drawHourLines(gc, 10);
     drawNumbers(gc, 25);
 }
 
-void ClockPanel::drawHands(wxGraphicsContext *gc) {
+void wxClockGC::drawHands(wxGraphicsContext *gc) {
     time_t currentTime;
     struct tm *localTime;
 
@@ -58,7 +58,7 @@ void ClockPanel::drawHands(wxGraphicsContext *gc) {
     drawHourHand(gc, 50, localTime->tm_hour, localTime->tm_min);
 }
 
-void ClockPanel::drawClockCircle(wxGraphicsContext *gc) {
+void wxClockGC::drawClockCircle(wxGraphicsContext *gc) {
     const wxPen pen = wxPen(wxColour(189, 199, 208), radius * RATIO);
     gc->SetPen(pen);
     wxBrush brush = wxBrush(wxColour(60, 75, 82));
@@ -67,7 +67,7 @@ void ClockPanel::drawClockCircle(wxGraphicsContext *gc) {
     gc->DrawEllipse(origin_point.x - _radius, origin_point.y - _radius, _radius * 2, _radius * 2);
 }
 
-void ClockPanel::drawCenterScrewCircle(wxGraphicsContext *gc) {
+void wxClockGC::drawCenterScrewCircle(wxGraphicsContext *gc) {
     wxPen pen = wxPen(wxColour(189, 199, 208), 0);
     gc->SetPen(pen);
     wxBrush brush = wxBrush(wxColour(189, 199, 208));
@@ -84,7 +84,7 @@ void ClockPanel::drawCenterScrewCircle(wxGraphicsContext *gc) {
     gc->DrawEllipse(origin_point.x - _radius, origin_point.y - _radius, _radius * 2, _radius * 2);
 }
 
-void ClockPanel::drawMinuteLines(wxGraphicsContext *gc, int percentage_length) {
+void wxClockGC::drawMinuteLines(wxGraphicsContext *gc, int percentage_length) {
     wxPen pen = wxPen(wxColour(106, 129, 138), radius * (RATIO / 3));
     pen.SetCap(wxCAP_ROUND);
     gc->SetPen(pen);
@@ -97,7 +97,7 @@ void ClockPanel::drawMinuteLines(wxGraphicsContext *gc, int percentage_length) {
     }
 }
 
-void ClockPanel::drawHourLines(wxGraphicsContext *gc, int percentage_length) {
+void wxClockGC::drawHourLines(wxGraphicsContext *gc, int percentage_length) {
     wxPen pen = wxPen(wxColour(255, 255, 255), radius * (RATIO / 2.2));
     pen.SetCap(wxCAP_ROUND);
     gc->SetPen(pen);
@@ -109,7 +109,7 @@ void ClockPanel::drawHourLines(wxGraphicsContext *gc, int percentage_length) {
     }
 }
 
-void ClockPanel::drawNumbers(wxGraphicsContext *gc, int pos_from_center) {
+void wxClockGC::drawNumbers(wxGraphicsContext *gc, int pos_from_center) {
     int _percentage_pos = 100 - pos_from_center;
 
     wxFont font(wxFontInfo(12));
@@ -123,7 +123,7 @@ void ClockPanel::drawNumbers(wxGraphicsContext *gc, int pos_from_center) {
     }
 }
 
-void ClockPanel::drawSecondHand(wxGraphicsContext *gc, int percentage_length, int second) {
+void wxClockGC::drawSecondHand(wxGraphicsContext *gc, int percentage_length, int second) {
     wxPen pen = wxPen(wxColour(189, 199, 208), radius * (RATIO / 2));
     pen.SetCap(wxCAP_BUTT);
     gc->SetPen(pen);
@@ -131,7 +131,7 @@ void ClockPanel::drawSecondHand(wxGraphicsContext *gc, int percentage_length, in
     drawLineFromCenter(gc, 0, (percentage_length * radius) / 100, angle);
 }
 
-void ClockPanel::drawMinuteHand(wxGraphicsContext *gc, int percentage_length, int minute) {
+void wxClockGC::drawMinuteHand(wxGraphicsContext *gc, int percentage_length, int minute) {
     wxPen pen = wxPen(wxColour(189, 199, 208), radius * (RATIO / 1.2));
     pen.SetCap(wxCAP_BUTT);
     gc->SetPen(pen);
@@ -139,7 +139,7 @@ void ClockPanel::drawMinuteHand(wxGraphicsContext *gc, int percentage_length, in
     drawLineFromCenter(gc, 0, (percentage_length * radius) / 100, angle);
 }
 
-void ClockPanel::drawHourHand(wxGraphicsContext *gc, int percentage_length, int hour, int minute) {
+void wxClockGC::drawHourHand(wxGraphicsContext *gc, int percentage_length, int hour, int minute) {
     wxPen pen = wxPen(wxColour(189, 199, 208), radius * (RATIO / 0.7));
     pen.SetCap(wxCAP_BUTT);
     gc->SetPen(pen);
@@ -147,7 +147,7 @@ void ClockPanel::drawHourHand(wxGraphicsContext *gc, int percentage_length, int 
     drawLineFromCenter(gc, 0, (percentage_length * radius) / 100, angle);
 }
 
-void ClockPanel::drawLineFromCenter(wxGraphicsContext *gc, int start_at_radius, int end_at_radius, int angle) {
+void wxClockGC::drawLineFromCenter(wxGraphicsContext *gc, int start_at_radius, int end_at_radius, int angle) {
     int _angle = angle - 90;
     double rad_angle = radian(_angle);
 
@@ -164,7 +164,7 @@ void ClockPanel::drawLineFromCenter(wxGraphicsContext *gc, int start_at_radius, 
     gc->StrokeLine(start_point.x, start_point.y, end_point.x, end_point.y);
 }
 
-void ClockPanel::drawTextFromCenter(wxGraphicsContext *gc, int pos_at_radius, int angle, wxString text) {
+void wxClockGC::drawTextFromCenter(wxGraphicsContext *gc, int pos_at_radius, int angle, wxString text) {
     int _angle = angle - 90;
     double rad_angle = radian(_angle);
     double start_x = pos_at_radius * cos(rad_angle);
@@ -178,7 +178,7 @@ void ClockPanel::drawTextFromCenter(wxGraphicsContext *gc, int pos_at_radius, in
     gc->DrawText(text, start_point.x, start_point.y);
 }
 
-double ClockPanel::radian(int angle) {
+double wxClockGC::radian(int angle) {
     return (PI / 180) * angle;
 }
 

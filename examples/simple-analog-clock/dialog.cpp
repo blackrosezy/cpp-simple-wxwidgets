@@ -6,8 +6,10 @@ SimpleDialog::SimpleDialog(const wxString &title) :
     wxImage::AddHandler(new wxJPEGHandler);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
-    imagePanel = new ClockPanel(this);
-    sizer->Add(imagePanel, 1, wxEXPAND);
+    clockDC = new wxClockDC(this);
+    clockGC = new wxClockGC(this);
+    sizer->Add(clockDC, 1, wxEXPAND);
+    sizer->Add(clockGC, 1, wxEXPAND);
     SetSizer(sizer);
 
     timer = new wxTimer(this);
@@ -25,6 +27,7 @@ void SimpleDialog::OnQuit(wxCloseEvent &event) {
     Destroy();
 }
 
-void SimpleDialog::OnTimer(wxTimerEvent &event){
-    imagePanel->Refresh();
+void SimpleDialog::OnTimer(wxTimerEvent &event) {
+    clockDC->Refresh();
+    clockGC->Refresh();
 }

@@ -8,5 +8,5 @@ public:
 private:
     void OnQuit(wxCloseEvent &event);
 
-    ImagePanel *imagePanel;
+    ImagePanel *clockGC;
 };
