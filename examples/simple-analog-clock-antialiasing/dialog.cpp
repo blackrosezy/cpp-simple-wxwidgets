@@ -6,7 +6,7 @@ SimpleDialog::SimpleDialog(const wxString &title) :
     wxImage::AddHandler(new wxJPEGHandler);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
-    imagePanel = new ClockPanel(this, wxT("images/soup.jpg"));
+    imagePanel = new ClockPanel(this);
     sizer->Add(imagePanel, 1, wxEXPAND);
     SetSizer(sizer);
 

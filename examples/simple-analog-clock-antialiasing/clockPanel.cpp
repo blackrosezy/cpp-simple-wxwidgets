@@ -7,7 +7,7 @@
 const double PI = acos(-1);
 const double RATIO = 0.05;
 
-ClockPanel::ClockPanel(wxWindow *parent, wxString fileName) : wxPanel(parent) {
+ClockPanel::ClockPanel(wxWindow *parent) : wxPanel(parent) {
     SetDoubleBuffered(true);
     Bind(wxEVT_PAINT, &ClockPanel::paintEvent, this);
     Bind(wxEVT_SIZE, &ClockPanel::OnSize, this);

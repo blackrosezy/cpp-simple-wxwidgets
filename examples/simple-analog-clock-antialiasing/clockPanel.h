@@ -9,7 +9,7 @@
 
 class ClockPanel : public wxPanel {
 public:
-    ClockPanel(wxWindow *parent, wxString fileName);
+    ClockPanel(wxWindow *parent);
 
     void paintEvent(wxPaintEvent &event);
 
