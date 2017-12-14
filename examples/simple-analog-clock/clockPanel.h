@@ -16,11 +16,6 @@ public:
     void OnSize(wxSizeEvent &event);
 
 private:
-//    void drawSecondHand(wxDC &dc, int radius, int cx, int cy, int second);
-//
-//    void drawMinuteHand(wxDC &dc, int radius, int cx, int cy, int minute);
-//
-//    void drawHourHand(wxDC &dc, int radius, int cx, int cy, int hour);
 
     void drawClock(wxDC &dc);
 

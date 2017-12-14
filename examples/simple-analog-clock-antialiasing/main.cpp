@@ -4,7 +4,7 @@
 IMPLEMENT_APP(SimpleApp)
 
 bool SimpleApp::OnInit() {
-    SimpleDialog *simple = new SimpleDialog(wxT("My Simple Analog Clock"));
+    SimpleDialog *simple = new SimpleDialog(wxT("My Simple Analog Clock (anti-aliasing)"));
     simple->SetIcon(wxICON(APP_ICON));
     simple->Show(true);
     return true;
