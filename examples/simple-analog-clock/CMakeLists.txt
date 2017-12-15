@@ -6,11 +6,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Os")
 set(WXWIDGETS_ROOT C:/wxWidgets-3.0.3)
 set(MINGW_ROOT C:/mingw64)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    set(PROJECT_LINK_LIBS libwxmsw30u.a libcomctl32.a libwxpng.a libwxjpeg.a libwxzlib.a)
-else ()
-    set(PROJECT_LINK_LIBS libwxmsw30ud.a libcomctl32.a libwxpngd.a libwxjpegd.a libwxzlibd.a)
-endif ()
+set(PROJECT_LINK_LIBS libwxmsw30u.a libcomctl32.a libwxpng.a libwxjpeg.a libwxzlib.a)
 link_directories(${WXWIDGETS_ROOT}/lib ${MINGW_ROOT}/x86_64-w64-mingw32/lib)
 
 include_directories(${WXWIDGETS_ROOT}/include)
